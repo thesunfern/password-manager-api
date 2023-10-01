@@ -31,7 +31,7 @@ namespace password_manager_api
                 
                 ));
 
-            builder.Services.AddScoped<IUserRepository, UserRepository>();
+            services.AddScoped<IUserRepository, UserRepository>();
             services.AddScoped<IPasswordRepository, PasswordRepository>();
 
             var app = builder.Build();
