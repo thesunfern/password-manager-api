@@ -13,17 +13,18 @@ namespace password_manager_api.Repositories.PasswordRepository
     public class PasswordRepository : IPasswordRepository
     {
         private ConnectionStrings _connectionStrings;
+        private string _sqlConnection;
         public PasswordRepository(IOptions<ConnectionStrings> connectionStrings)
         {
             _connectionStrings = connectionStrings.Value;
+            _sqlConnection = _connectionStrings.SQLConnection;
         }
 
         public List<PasswordModel> GetPasswords(UserModel user)
         {
-            string connection = _connectionStrings.SQLConnection;
             DataTable dt = new DataTable();
             List<PasswordModel> passwordsList = new List<PasswordModel>();
-            using (SqlConnection sqlConnection = new SqlConnection(connection)) {
+            using (SqlConnection sqlConnection = new SqlConnection(_sqlConnection)) {
                 using (SqlCommand sqlCommand = new SqlCommand("GetPasswords", sqlConnection))
                 {
                     sqlCommand.CommandType = CommandType.StoredProcedure;

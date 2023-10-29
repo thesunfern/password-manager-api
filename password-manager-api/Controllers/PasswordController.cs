@@ -14,7 +14,7 @@ namespace password_manager_api.Controllers
             _repository = repository;
         }
 
-        [HttpGet]
+        [HttpPost]
         [Route("GetPasswords")]
         public IActionResult GetPasswords([FromBody] UserModel user)
         {

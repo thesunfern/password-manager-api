@@ -26,7 +26,8 @@ namespace password_manager_api
                 name: "AllowOrigin",
                 policy =>
                 {
-                    policy.WithOrigins("http://localhost:5192", "https://localhost:7293").AllowAnyHeader().AllowAnyMethod();
+                    //policy.WithOrigins("http://localhost:5192", "https://localhost:7293").AllowAnyHeader().AllowAnyMethod();
+                    policy.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod();
                 }
                 
                 ));
